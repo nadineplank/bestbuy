@@ -1,6 +1,6 @@
+import sys
 import store
 import products
-import sys
 
 class StoreUI:
     """Represents the UI for the store"""
