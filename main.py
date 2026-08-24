@@ -1,17 +1,27 @@
 import store
 import products
+import sys
 
 class StoreUI:
+    """Represents the UI for the store"""
+
     def __init__(self, store_obj):
+        """Initializes the store UI"""
         self.store = store_obj
 
     def display_products(self):
+        """Displays all the products in the store"""
         all_products = self.store.get_all_products()
         for index, product in enumerate(all_products):
-            print(f"{index + 1}. {product.name}, Price: ${product.price}, Quantity: {product.quantity}")
+            print(
+                f"{index + 1}. {product.name}, "
+                f"Price: ${product.price}, "
+                f"Quantity: {product.quantity}"
+            )
         return all_products
 
     def start(self):
+        """Starts the UI"""
         menu = """
            Store Menu
            ----------
@@ -24,6 +34,7 @@ class StoreUI:
         print(menu)
         user_choice = int(input("Please choose a number: "))
 
+        # Handle user menu selection
         if user_choice == 1:
             self.display_products()
             self.start()
@@ -59,7 +70,7 @@ class StoreUI:
             self.start()
 
         elif user_choice == 4:
-            exit()
+            sys.exit()
 
 # setup initial stock of inventory
 product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
