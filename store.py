@@ -22,7 +22,8 @@ class Store:
 
         return [product for product in self.products if product.active]
 
-    def order(self, shopping_list):
+    @staticmethod
+    def order(shopping_list):
         """Orders the shopping list"""
         total_price = 0
 
