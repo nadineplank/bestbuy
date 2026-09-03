@@ -9,7 +9,7 @@ class Product:
         self.name = name
         self.price = price
         self.quantity = quantity
-        self.active = True
+        self.active = quantity > 0
 
     def get_quantity(self):
         """Gets the quantity of the product"""
@@ -18,7 +18,7 @@ class Product:
     def set_quantity(self, quantity):
         """Sets the quantity of the product"""
         self.quantity = quantity
-        if self.quantity == 0:
+        if quantity == 0:
             self.deactivate()
 
     def is_active(self):
@@ -51,5 +51,5 @@ class Product:
         if quantity > self.quantity:
             raise ValueError("Not enough in stock")
 
-        self.quantity -= quantity
+        self.set_quantity(self.quantity - quantity)
         return quantity * self.price
